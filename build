@@ -4,7 +4,7 @@ set -e -x
 
 # Kernel Source
 KERNEL_SOURCE=https://github.com/apisConn/android_kernel_samsung_a24.git
-KERNEL_BRANCH=A13
+KERNEL_BRANCH=A14
 KERNEL_DEFCONFIG=a24_defconfig
 
 # Prebuilt Proton Clang Toolchain
@@ -38,6 +38,12 @@ cd "${WORK}" || exit 1
 
 # Setting Toolchain Path
 PATH="${WORK}/clang/bin:$PATH"
+
+# Fix permissions for scripts
+chmod +x ${KERNEL_SRC}/scripts/gcc-version.sh
+chmod +x ${KERNEL_SRC}/scripts/ld-version.sh
+chmod +x ${KERNEL_SRC}/scripts/clang-version.sh
+chmod +x ${KERNEL_SRC}/scripts/lld-version.sh
 
 # Enter Kernel root directory
 cd "${KERNEL_SRC}" || exit 1
