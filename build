@@ -53,6 +53,7 @@ cd "${KERNEL_SRC}" || exit 1
 make_fun "${KERNEL_DEFCONFIG}"
 
 # Make sure abi_symbollist.raw whitelist file is created
+mkdir -p "${KERNEL_SRC}/include/config"
 touch "${KERNEL_SRC}/include/config/abi_symbollist"
 
 make_fun -j"$(nproc --all)" 2>&1 | tee build.log || exit 1
