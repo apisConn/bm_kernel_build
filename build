@@ -37,13 +37,14 @@ cd "${WORK}" || exit 1
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Setting Toolchain Path
-PATH="${WORK}/clang/bin:$PATH"
+export PATH="${WORK}/clang/bin:$PATH"
 
 # Fix permissions for scripts
-chmod +x ${KERNEL_SRC}/scripts/gcc-version.sh
-chmod +x ${KERNEL_SRC}/scripts/ld-version.sh
-chmod +x ${KERNEL_SRC}/scripts/clang-version.sh
-chmod +x ${KERNEL_SRC}/scripts/lld-version.sh
+chmod +x "${KERNEL_SRC}/scripts/gcc-version.sh"
+chmod +x "${KERNEL_SRC}/scripts/ld-version.sh"
+chmod +x "${KERNEL_SRC}/scripts/clang-version.sh"
+chmod +x "${KERNEL_SRC}/scripts/lld-version.sh"
+chmod +x "${KERNEL_SRC}/scripts/pahole-flags.sh"
 
 # Enter Kernel root directory
 cd "${KERNEL_SRC}" || exit 1
